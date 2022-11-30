@@ -42,7 +42,7 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
     <link href="css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="css/themes/all-themes.css" rel="stylesheet" />
+    <link href="css/themes/theme-grey.css" rel="stylesheet" />
 </head>
 
 <body class="theme-grey">
