@@ -1,4 +1,4 @@
-<!-- Basic Examples -->
+
 <div class="row clearfix">
                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                      <div class="card">
@@ -31,7 +31,7 @@
                                             <td><?php echo $no++;?></td>
                                             <td><?php echo $data['kd_dokter']?></td>
                                             <td><?php echo $data['nm_dokter']?></td>
-                                            <td><?php echo $data['tmp_lahir']?></td>
+                                            <td><?php echo $data['tmp_lhr']?></td>
                                             <td><?php echo $data['tlp']?></td>
                                             <td><?php echo $data['alamat']?></td>
                                             <td>
