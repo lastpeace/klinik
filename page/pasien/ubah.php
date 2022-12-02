@@ -30,6 +30,13 @@
                             </div>
                         </div>
 
+                        <label for="">Jenis Kelamin</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="j_kel" value="<?php echo $tampil['j_kel'];?>" class="form-control" />
+                            </div>
+                        </div>
+
                         <label for="">Pekerjaan</label>
                         <div class="form-group">
                             <div class="form-line">
@@ -54,7 +61,28 @@
                         <label for="">Tanggal Lahir</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="tgl" value="<?php echo $tampil['tgl_lahir'];?>" class="form-control" />
+                                <input type="date" name="tgl" value="<?php echo $tampil['tgl_lhr'];?>" class="form-control" />
+                            </div>
+                        </div>
+
+                        <label for="">Usia</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="usia" value="<?php echo $tampil['usia'];?>" class="form-control" />
+                            </div>
+                        </div>
+
+                        <label for="">No Telpone</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="telp" value="<?php echo $tampil['no_tlp'];?>" class="form-control" />
+                            </div>
+                        </div>
+
+                        <label for="">GOL DARAH</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="status" value="<?php echo $tampil['status'];?>" class="form-control" />
                             </div>
                         </div>
 
@@ -67,12 +95,16 @@ if (isset($_POST['simpan'])){
 $kode=$_POST['kode'];
 $nama=$_POST['nama'];
 $pekerjaan=$_POST['pekerjaan'];
+$j_kel=$_POST['j_kel'];
 $agama=$_POST['agama'];
 $alamat=$_POST['alamat'];
 $tgl = $_POST['tgl'];
+$usia = $_POST['usia'];
+$telp = $_POST['telp'];
+$status = $_POST['status'];
 
 
-    $sql=$koneksi->query("update tb_pasien set nm_pasien='$nama',pekerjaan='$pekerjaan',agama='$agama',alamat='$alamat',tgl_lahir='$tgl' where no_pasien='$kode'");
+    $sql=$koneksi->query("update tb_pasien set nm_pasien='$nama',pekerjaan='$pekerjaan',j_kel='$j_kel',agama='$agama',alamat='$alamat',tgl_lhr='$tgl',usia='$usia',no_tlp='$telp', status='$status' where no_pasien='$kode'");
     if ($sql){
         ?>
         <script type="text/javascript">

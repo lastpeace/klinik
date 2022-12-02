@@ -1,16 +1,16 @@
 <?php
- 
+error_reporting(E_ALL ^ E_DEPRECATED AND E_NOTICE);
 // menghubungkan dengan koneksi database
 $koneksi=new mysqli("localhost","root","","klinik");
  
 // mengambil data pasien dengan kode paling besar
-$query = mysqli_query($koneksi, "SELECT max(no_pasien) as kodeTerkecil FROM tb_pasien");
+$query = mysqli_query($koneksi, "SELECT max(no_pasien) as kodeTerbesar FROM tb_pasien");
 $data = mysqli_fetch_array($query);
-$nopasien = $data['kodeTerkecil'];
+$nopasien = $data['kodeTerbesar'];
  
-// mengambil angka dari nmor pasien terbesar, menggunakan fungsi substr 
+// mengambil angka dari nmor pasien terbesar, menggunakan fungsi substr
 // dan diubah ke integer dengan (int)
-$urutan = (int) substr($nopasien, 1, 3);
+$urutan = (int) substr($nopasien, 5);
  
 // bilangan yang diambil ini ditambah 1 untuk menentukan nomor urut berikutnya
 $urutan++;
@@ -20,7 +20,7 @@ $urutan++;
 // misalnya perintah sprintf("%03s", 15); maka akan menghasilkan '015'
 // angka yang diambil tadi digabungkan dengan kode huruf yang kita inginkan, misalnya BRG 
 $huruf = "PSN";
-$nopasien = $huruf . sprintf("%03s", $urutan);
+$nopasien = $huruf . sprintf("%05s", $urutan);
 ?>
 <script>
 function jumlah(){
@@ -45,7 +45,7 @@ if(!isNaN(rslt)){
                         </div>
                             
                         <div class="body">
-                        <form method="POST">
+                        <form method="POST" action="    ">
                         <label for="">Kode Pasien</label>
                         <div class="form-group">
                             <div class="form-line">
@@ -91,7 +91,7 @@ if(!isNaN(rslt)){
                         <label for="">Tanggal Lahir</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="tgl_lhr"class="form-control" />
+                                <input type="date" name="tgl_lhr"class="form-control" />
                             </div>
                         </div>
 
@@ -116,6 +116,13 @@ if(!isNaN(rslt)){
                             </div>
                         </div>
 
+                        <label for="">Tanggal Daftar</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="date" name="tgldaftar"class="form-control" />
+                            </div>
+                        </div>
+
                         
 
                         <input type="submit" name="simpanpasien" value="Simpan" class="btn btn-primary">
@@ -131,11 +138,11 @@ $agama=$_POST['agama'];
 $alamat=$_POST['alamat'];
 $tgl_lhr=$_POST['tgl_lhr'];
 $usia=$_POST['usia'];
-$telpon=$_POST['telpon'];
+$no_tlp=$_POST['no_tlp'];
 $status=$_POST['status'];
+    $tgldaftar = $_POST['tgldaftar'];
 
-
-    $sql=$koneksi->query("insert into tb_pasien values('$kode','$nama','$j_kel','$pekerjaan','$agama','$alamat','$tgl_lhr','$usia','$telpon','$status')");
+    $sql=$koneksi->query("insert into tb_pasien(no_pasien,nm_pasien,j_kel,pekerjaan,agama,alamat,tgl_lhr,usia,no_tlp,status,tgldaftar) values('$kode','$nama','$j_kel','$pekerjaan','$agama','$alamat','$tgl_lhr','$usia','$no_tlp','$status','$tgldaftar')");
     if ($sql){
         ?>
         <script type="text/javascript">

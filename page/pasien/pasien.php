@@ -42,7 +42,7 @@
                                             <td><?php echo $data['pekerjaan']?></td>
                                             <td><?php echo $data['agama']?></td>
                                             <td><?php echo $data['alamat']?></td>
-                                            <td><?php echo $data['tgl_lahir']?></td>
+                                            <td><?php echo $data['tgl_lhr']?></td>
                                             <td><?php echo $data['usia']?></td>
                                             <td><?php echo $data['no_tlp']?></td>
                                             <td><?php echo $data['status']?></td>

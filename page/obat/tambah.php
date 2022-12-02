@@ -10,7 +10,7 @@ $noobat = $data['kodeTerbesar'];
  
 // mengambil angka dari nmor pasien terbesar, menggunakan fungsi substr
 // dan diubah ke integer dengan (int)
-$urutan = (int) substr($noobat, 1, 5);
+$urutan = (int) substr($noobat, 5);
  
 // bilangan yang diambil ini ditambah 1 untuk menentukan nomor urut berikutnya
 $urutan++;
@@ -128,7 +128,7 @@ $stok = $_POST['stok'];
 $harga_beli =$_POST['harga_beli'];
 $harga_jual =$_POST[ 'harga_jual'];
 $profit= $_POST[ 'profit'];
-    $sql =   $koneksi->query("Insert into tb_obat values('$kode', '$nama', '$satuan', $isi','$stok', '$harga_beli', '$harga_jual', '$profit')");
+    $sql =   $koneksi->query("INSERT INTO `tb_obat`(`kd_obat`, `nm_obat`, `satuan`, `isi`, `stok`, `harga_beli`, `harga_jual`, `profit`) VALUES ('$kode','$nama','$satuan','$isi','$stok','$harga_beli','$harga_jual','$profit')");
 
     if ($sql){
         ?>

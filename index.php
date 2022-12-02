@@ -47,7 +47,7 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
 
 <body class="theme-grey">
     <!-- Page Loader -->
-    <div class="page-loader-wrapper">
+    <!-- <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
                 <div class="spinner-layer pl-green">
@@ -61,7 +61,7 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
             </div>
             <p>Please wait...</p>
         </div>
-    </div>
+    </div> -->
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>

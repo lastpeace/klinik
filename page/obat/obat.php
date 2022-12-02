@@ -19,8 +19,8 @@
                                              <th>Satuan</th>
                                              <th>Isi</th>
                                              <th>Stock</th>
-                                             <th>HargaBeli</th>
-                                             <th>HargaJual</th>
+                                             <th>Harga Beli</th>
+                                             <th>Harga Jual</th>
                                              <th>Profit</th>
                                              <th>Aksi</th>
                                          </tr>
