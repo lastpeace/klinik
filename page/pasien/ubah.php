@@ -10,13 +10,13 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                UBAH DATA pasien
+                                UBAH DATA PASIEN
                             </h2>
                         </div>
                             
                         <div class="body">
                         <form method="POST">
-                        <label for="">No Pasien</label>
+                        <label for="">Kode Pasien</label>
                         <div class="form-group">
                             <div class="form-line">
                                 <input type="text" name="kode" value="<?php echo $tampil['no_pasien'];?>" class="form-control" readonly />
@@ -30,17 +30,17 @@
                             </div>
                         </div>
 
-                        <label for="">Jenis Kelamin</label>
+                        <label for="">Pekerjaan</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="jenis" value="<?php echo $tampil['j_kel'];?>" class="form-control" required/>
+                                <input type="text" name="pekerjaan" value="<?php echo $tampil['pekerjaan'];?>" class="form-control" />
                             </div>
                         </div>
 
-                        <label for="">Telpon</label>
+                        <label for="">Agama</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="tlp" value="<?php echo $tampil['no_tlp'];?>" class="form-control" />
+                                <input type="text" name="agama" value="<?php echo $tampil['agama'];?>" class="form-control" />
                             </div>
                         </div>
 
@@ -50,22 +50,11 @@
                                 <input type="text" name="alamat" value="<?php echo $tampil['alamat'];?>" class="form-control" />
                             </div>
                         </div>
+
                         <label for="">Tanggal Lahir</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="date" name="tgl_lahir" value="<?php echo $tampil['tgl_lahir'];?>" class="form-control" />
-                            </div>
-                        </div>
-                        <label for="">Usia</label>  
-                        <div class="form-group">
-                            <div class="form-line">
-                                <input type="text" name="usia" value="<?php echo $tampil['usia'];?>" class="form-control" readonly />
-                            </div>
-                        </div>
-                        <label for="">Gol Darah</label>
-                        <div class="form-group">
-                            <div class="form-line">
-                                <input type="text" name="goldarah" value="<?php echo $tampil['status'];?>" class="form-control" />
+                                <input type="text" name="tgl" value="<?php echo $tampil['tgl_lahir'];?>" class="form-control" />
                             </div>
                         </div>
 
@@ -77,19 +66,17 @@
 if (isset($_POST['simpan'])){
 $kode=$_POST['kode'];
 $nama=$_POST['nama'];
-$jenis=$_POST['jenis'];
-$tlp=$_POST['tlp'];
+$pekerjaan=$_POST['pekerjaan'];
+$agama=$_POST['agama'];
 $alamat=$_POST['alamat'];
-$goldarah=$_POST['goldarah'];
-$tgl_lahir=$_POST['tgl_lahir'];
-$usia=$_POST['usia'];
+$tgl = $_POST['tgl'];
 
 
-    $sql=$koneksi->query("update tb_pasien set nm_pasien='$nama',j_kel='$jenis',no_tlp='$tlp',alamat='$alamat' , status ='$goldarah', tgl_lahir='$tgl_lahir',usia='$usia' where no_pasien='$kode'");
+    $sql=$koneksi->query("update tb_pasien set nm_pasien='$nama',pekerjaan='$pekerjaan',agama='$agama',alamat='$alamat',tgl_lahir='$tgl' where no_pasien='$kode'");
     if ($sql){
         ?>
         <script type="text/javascript">
-        alert ("Data Berhasil di Ubah");
+        alert ("Data Pasien Berhasil di Ubah");
         window.location.href="?page=pasien";
         </script>
         <?php
