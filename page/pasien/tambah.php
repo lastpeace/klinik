@@ -8,7 +8,7 @@ $query = mysqli_query($koneksi, "SELECT max(no_pasien) as kodeTerkecil FROM tb_p
 $data = mysqli_fetch_array($query);
 $nopasien = $data['kodeTerkecil'];
  
-// mengambil angka dari nmor pasien terbesar, menggunakan fungsi substr
+// mengambil angka dari nmor pasien terbesar, menggunakan fungsi substr 
 // dan diubah ke integer dengan (int)
 $urutan = (int) substr($nopasien, 1, 3);
  
@@ -77,7 +77,7 @@ if(!isNaN(rslt)){
                         <label for="">Agama</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="Agama"class="form-control" />
+                                <input type="text" name="agama"class="form-control" />
                             </div>
                         </div>
 
@@ -118,11 +118,11 @@ if(!isNaN(rslt)){
 
                         
 
-                        <input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
+                        <input type="submit" name="simpanpasien" value="Simpan" class="btn btn-primary">
                         </form>
 
 <?php 
-if (isset($_POST['simpan'])){
+if (isset($_POST['simpanpasien'])){
 $kode=$_POST['kode'];
 $nama=$_POST['nama'];
 $j_kel=$_POST['j_kel'];

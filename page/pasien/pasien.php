@@ -24,7 +24,8 @@
                                              <th>usia</th>
                                              <th>Telephone</th>
                                              <th>Gol Darah</th>
-                                             <th>Tanggal Daftar     </th>
+                                             <th>Tanggal Daftar</th>
+                                             <th>Aksi</th>
                                          </tr>
                                      </thead>
                                      <tbody>
