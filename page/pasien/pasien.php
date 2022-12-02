@@ -63,7 +63,7 @@
                                             ?>
                                      </tbody>
                                  </table>
-                                 <a href="?page=dokter&aksi=tambah" class="btn btn-primary">
+                                 <a href="?page=pasien&aksi=tambah" class="btn btn-primary">
                                     <img src="images/edit_add.ico" width="15" height="15"></a>
                              </div>
                          </div>
