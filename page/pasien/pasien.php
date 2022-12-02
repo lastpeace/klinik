@@ -22,6 +22,9 @@
                                              <th>Alamat</th>
                                              <th>Tanggal Lahir</th>
                                              <th>usia</th>
+                                             <th>Telephone</th>
+                                             <th>Gol Darah</th>
+                                             <th>Tanggal Daftar     </th>
                                          </tr>
                                      </thead>
                                      <tbody>
@@ -40,6 +43,9 @@
                                             <td><?php echo $data['alamat']?></td>
                                             <td><?php echo $data['tgl_lahir']?></td>
                                             <td><?php echo $data['usia']?></td>
+                                            <td><?php echo $data['no_tlp']?></td>
+                                            <td><?php echo $data['status']?></td>
+                                            <td><?php echo $data['tgldaftar']?></td>
                                             <td>
                                             <a href="?page=pasien&aksi=ubah&no_pasien=<?php echo $data['no_pasien'];?>" class="
                                                 btn btn-success"><img src= "images/edit.ico"

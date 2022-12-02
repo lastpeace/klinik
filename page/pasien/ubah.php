@@ -50,6 +50,24 @@
                                 <input type="text" name="alamat" value="<?php echo $tampil['alamat'];?>" class="form-control" />
                             </div>
                         </div>
+                        <label for="">Tanggal Lahir</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="date" name="tgl_lahir" value="<?php echo $tampil['tgl_lahir'];?>" class="form-control" />
+                            </div>
+                        </div>
+                        <label for="">Usia</label>  
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="usia" value="<?php echo $tampil['usia'];?>" class="form-control" readonly />
+                            </div>
+                        </div>
+                        <label for="">Gol Darah</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="goldarah" value="<?php echo $tampil['status'];?>" class="form-control" />
+                            </div>
+                        </div>
 
 
                         <input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
@@ -62,9 +80,12 @@ $nama=$_POST['nama'];
 $jenis=$_POST['jenis'];
 $tlp=$_POST['tlp'];
 $alamat=$_POST['alamat'];
+$goldarah=$_POST['goldarah'];
+$tgl_lahir=$_POST['tgl_lahir'];
+$usia=$_POST['usia'];
 
 
-    $sql=$koneksi->query("update tb_pasien set nm_pasien='$nama',j_kel='$jenis',no_tlp='$tlp',alamat='$alamat' where no_pasien='$kode'");
+    $sql=$koneksi->query("update tb_pasien set nm_pasien='$nama',j_kel='$jenis',no_tlp='$tlp',alamat='$alamat' , status ='$goldarah', tgl_lahir='$tgl_lahir',usia='$usia' where no_pasien='$kode'");
     if ($sql){
         ?>
         <script type="text/javascript">
