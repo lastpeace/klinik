@@ -4,9 +4,9 @@
 $koneksi=new mysqli("localhost","root","","klinik");
  
 // mengambil data pasien dengan kode paling besar
-$query = mysqli_query($koneksi, "SELECT max(no_pasien) as kodeTerbesar FROM tb_pasien");
+$query = mysqli_query($koneksi, "SELECT max(no_pasien) as kodeTerkecil FROM tb_pasien");
 $data = mysqli_fetch_array($query);
-$nopasien = $data['kodeTerbesar'];
+$nopasien = $data['kodeTerkecil'];
  
 // mengambil angka dari nmor pasien terbesar, menggunakan fungsi substr
 // dan diubah ke integer dengan (int)
@@ -135,7 +135,7 @@ $telpon=$_POST['telpon'];
 $status=$_POST['status'];
 
 
-    $sql=$koneksi->query("insert into tb_dokter values('$kode','$nama','$j_kel','$pekerjaan','$agama','$alamat','$tgl_lhr','$usia','$telpon','$status')");
+    $sql=$koneksi->query("insert into tb_pasien values('$kode','$nama','$j_kel','$pekerjaan','$agama','$alamat','$tgl_lhr','$usia','$telpon','$status')");
     if ($sql){
         ?>
         <script type="text/javascript">
