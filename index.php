@@ -177,9 +177,8 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
                             <span>Pendaftaran Pasien</span>
                         </a>
                     </li>
-
+                        
                     <li>
-
                         <a href="?page=rekam_medis&koderm=<?php 
                         $rmkode = $_SESSION["rekammedis"];
                         echo $rmkode; ?>">
@@ -187,6 +186,9 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
                             <span>Rekam Medis</span>
                         </a>
                     </li>
+
+                    
+    
                     <?php  } ?>
                     <?php  if($_SESSION['dokter'] || $_SESSION['admin']){ ?>
                     <li>
@@ -195,6 +197,8 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
                             <span>Pemeriksaan Dokter</span>
                         </a>
                     </li>
+
+                  
                     <?php  } ?>
                     <?php  if($_SESSION['apoteker'] || $_SESSION['admin']){ ?>
                      <li>
@@ -203,6 +207,7 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
                             <span>Tambah Stok Obat</span>
                         </a>
                     </li>
+
 
                     <li>
                         <a href="?page=cetakobat">

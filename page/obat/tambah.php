@@ -23,8 +23,7 @@ $huruf = "OBT";
 $noobat = $huruf . sprintf("%05s", $urutan);
 ?>
 <script>
-function jumlah(){
-    
+function jumlah(){    
 var hrg_beli = document.getElementById('harga_beli').value;
 var hrg_jual = document.getElementById('harga_jual').value;
 var hasil = parseInt(hrg_jual) - parseInt(hrg_beli);
@@ -45,7 +44,7 @@ if(!isNaN(hasil)){
                         </div>
                             
                         <div class="body">
-                        <form method="POST">
+                        <form method="POST" action="tambah.php">
                         <label for="">Kode obat</label>
                         <div class="form-group">
                             <div class="form-line">
@@ -100,7 +99,7 @@ if(!isNaN(hasil)){
                             <label for="">Harga Jual</label>
                                 <div class= "form-group">
                                     <div class="form-line">
-                                        <input type= "number" id= "harga_jual" name="harga_jual "onkeyup="jumlah()" class="form-control" />
+                                        <input type= "number" id= "harga_jual" name="harga_jual"onkeyup="jumlah()" class="form-control" />
                                     </div>
                                 </div>
 
@@ -109,8 +108,7 @@ if(!isNaN(hasil)){
                             <label for="">Profit</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="number" id="profit" name="profit" class="
-                                    form-control" />
+                                    <input type="number" id="profit" name="profit" class="form-control" />
                                 </div>
                             </div>
 
@@ -131,11 +129,11 @@ $profit= $_POST[ 'profit'];
     $sql =   $koneksi->query("INSERT INTO `tb_obat`(`kd_obat`, `nm_obat`, `satuan`, `isi`, `stok`, `harga_beli`, `harga_jual`, `profit`) VALUES ('$kode','$nama','$satuan','$isi','$stok','$harga_beli','$harga_jual','$profit')");
 
     if ($sql){
-        ?>
-        <script type="text/javascript">
+         ?>
+        <script type="text/javascript"> 
         alert ("Data Berhasil di Simpan");
-        window.location.href="?page=obat";
-        </script>
+        window.location.href="?page=obat"; 
+        </script> 
         <?php
     }
 }

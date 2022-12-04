@@ -513,7 +513,7 @@ CREATE TABLE `tb_pengguna` (
 --
 
 INSERT INTO `tb_pengguna` (`id`, `username`, `nama`, `password`, `level`, `foto`) VALUES
-(1, 'admin', 'Raihan Caesario Ammar Saputra', 'admin', 'admin', 'user.jpg'),
+(1, 'admin', 'Raihan Caesario Ammar Saputra', 'admin', 'admin', 'ammar.jpg'),
 (3, 'petugas', 'Ilham Priadi Wiguna', 'petugas', 'petugas', 'thumbs-up.png'),
 (4, 'dokter', 'dr.Febby Astari', 'dokter', 'dokter', 'user.png'),
 (5, 'apoteker', 'Nurul', 'apoteker', 'apoteker', 'user.png');
