@@ -21,7 +21,7 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Home | Klinik Febby Astari Wiguna</title>
     <!-- Favicon-->
-    <link rel="icon" href="images/save.ico" type="image/x-icon">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
 
     <!--Google Fonts 
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -83,7 +83,7 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.php"><img src="" width="35" height="35" style="float:left;margin:0 8px 4px 0;" />Klinik Dr.Febby Astari</a>
+                <a class="navbar-brand" href="index.php"><img src="images/logo.jpg" width="35" height="35" style="float:left;margin:0 8px 4px 0;" />Klinik Dr.Febby Astari</a>
             </div>
             
             <div>

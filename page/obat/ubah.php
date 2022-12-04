@@ -47,7 +47,7 @@ if(!isNaN(hasil)){
                             <div class="form-line">
                                 <select name="satuan" class="form-control show-tick">
                                 <option value=""><?php echo $tampil['satuan'];?></option>
-                                <option value= "Boto1">--Botol--</option>
+                                <option value= "Botol/Syrup">--Botol/Syrup--</option>
                                 <option value= "Butir">--Butir--</option>
                                 <option value= "Tablet">--Tablet--</option>
                                 </select>

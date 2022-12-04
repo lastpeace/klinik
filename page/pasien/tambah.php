@@ -115,21 +115,13 @@ if(!isNaN(rslt)){
                                 <input type="text" name="status"class="form-control" />
                             </div>
                         </div>
-
-                        <label for="">Tanggal Daftar</label>
-                        <div class="form-group">
-                            <div class="form-line">
-                                <input type="date" name="tgldaftar"class="form-control" />
-                            </div>
-                        </div>
-
-                        
-
                         <input type="submit" name="simpanpasien" value="Simpan" class="btn btn-primary">
                         </form>
 
 <?php 
 if (isset($_POST['simpanpasien'])){
+    date_default_timezone_set('Asia/Jakarta');
+    $date = date("Y-m-d H:i:s");
 $kode=$_POST['kode'];
 $nama=$_POST['nama'];
 $j_kel=$_POST['j_kel'];
@@ -140,9 +132,9 @@ $tgl_lhr=$_POST['tgl_lhr'];
 $usia=$_POST['usia'];
 $no_tlp=$_POST['no_tlp'];
 $status=$_POST['status'];
-    $tgldaftar = $_POST['tgldaftar'];
+    // $tgldaftar = $_POST['tgldaftar'];
 
-    $sql=$koneksi->query("insert into tb_pasien(no_pasien,nm_pasien,j_kel,pekerjaan,agama,alamat,tgl_lhr,usia,no_tlp,status,tgldaftar) values('$kode','$nama','$j_kel','$pekerjaan','$agama','$alamat','$tgl_lhr','$usia','$no_tlp','$status','$tgldaftar')");
+    $sql=$koneksi->query("insert into tb_pasien(no_pasien,nm_pasien,j_kel,pekerjaan,agama,alamat,tgl_lhr,usia,no_tlp,status,tgldaftar) values('$kode','$nama','$j_kel','$pekerjaan','$agama','$alamat','$tgl_lhr','$usia','$no_tlp','$status','$date')");
     if ($sql){
         ?>
         <script type="text/javascript">
