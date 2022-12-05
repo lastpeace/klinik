@@ -63,26 +63,22 @@
 
     date_default_timezone_set('Asia/Jakarta');
     $date=date("Y-m-d H:i:s");
-    $kd_st=$_POST['kode'];
+    $no_rm=$_POST['kode'];
     $nopasien=$_POST['no_pasien'];
     $kddokter=$_POST['dokter'];
     //$datekeluar=date("Y-m-d");
         
-    $pasien2=$koneksi->query("select * from tb_pasien where no_pasien='$nopasien'");
-    while ($data_pasien2=$pasien2->fetch_assoc()){
-       $status=$data_pasien2['status'];
-
-       if($status==0){
-        
-            $koneksi->query("insert into tb_rekam_medis(no_rm,no_pasien,diagnosa,tgl_pemeriksaan,ket,status,statusobat,kd_dokter)values('$kd_st','$nopasien','-','$date','-','Dalam Antrian','Dalam Antrian','$kddokter')");
-            $koneksi->query("update tb_pasien set status='A' where no_pasien='$nopasien'");
-
-       
+    $pasien=$koneksi->query("select * from tb_pasien where no_pasien='$nopasien'");
+    while ($data_pasien=$pasien->fetch_assoc()){
+       $status=$data_pasien['status'];
+       if($status=='TA'){
+            $koneksi->query("INSERT INTO tb_rekam_medis(no_rm,no_pasien,diagnosa,tgl_pemeriksaan,ket,status,statusobat,kd_dokter)values('$no_rm','$nopasien','-','$date','-','Dalam Antrian','Dalam Antrian','$kddokter')");
+            $koneksi->query("update tb_pasien set status='A' where no_pasien='$nopasien'");   
         }
         else{
         	?>
             <script type="text/javascript">
-             alert ("Nomor atau Nama Pasien Sudah Terdaftar");
+             alert ("Nomor atau Nama Pasien Sudah Terdaftar<?= $status;?>");
              window.location.href="?page=rekam_medis&koderm=<?php echo $kode; ?> ";
             </script>
              <?php
@@ -233,20 +229,20 @@
                         <br>
                         <input type="submit" name="simpanawal" value="Simpan" class="btn btn-primary">
                        <!--end tanpa database-->
-						<!--awal dengan database-->
-						<?php 
+						<!--awal dengan database
+						//<?php 
 						//  $keluhan=$koneksi->query("select * from tb_keluhan order by kd_keluhan");
 				        //         while ($d_keluhan=$keluhan->fetch_assoc()) {
-						?>
+						// ?>
 						  
-						<!-- <input type="checkbox" name="keluhan[]" id="keluhan[]" class="filled-in" value="<?=$d_keluhan['kd_keluhan']?>">
+						   <input type="checkbox" name="keluhan[]" id="keluhan[]" class="filled-in" value="<?=$d_keluhan['kd_keluhan']?>">
 						   
-						<label for="keluhan[]"><?=$d_keluhan['[nm_keluhan']?></label> -->
-						<?php
-						// }
-						?>
-						<!-- <input type="submit" name="simpan" value="Simpan"> -->
-						  <!-- end dengan database -->
+						//  <label for="keluhan[]"><?=$d_keluhan['[nm_keluhan']?></label>
+						// <?php
+						//  }
+						// ?>
+						//  <input type="submit" name="simpan" value="Simpan">
+						  end dengan database-->
                     </div>
 
 				</form>

@@ -8,8 +8,15 @@
 
 	$norm=$_GET['no_rm'];
 
-	//$sql1=$koneksi->query("select * from view_rm where no_rm='$norm'");
-		//$tampil2=$sql1->fetch_assoc();
+	$sql=$koneksi->query("update tb_rekam_medis set statusobat='Selesai' where no_rm='$norm'");
+	if ($sql){
+        ?>
+        <script type="text/javascript">
+        alert ("Data Siap DiCetak");
+        //window.location.href="?page=obat";
+        </script>
+        <?php
+    }
 
 ?>
 <style>
@@ -64,7 +71,7 @@
 	</tr>
 	<tr>
 		<td>Lingkar Perut &nbsp&nbsp</td>
-		<td>: &nbsp&nbsp <?php echo $tampil['lp']; ?></td>
+		<td>: &nbsp&nbsp <?php echo $tampil['lp']; ?>&nbspCm</td>
 		<td></td>
 		<td>Alergi Obat &nbsp&nbsp</td>
 		<td>: &nbsp&nbsp <?php echo $tampil['ao']; ?></td>
@@ -72,41 +79,18 @@
 	</table>
 	<br>
 	<table border="1" cellspacing="0px" cellpadding="5">
+		<!--<table style="border-bottom:3px dashed #00f;">-->
 	<thead>
 		<tr>
-			<th width="90px">Tanggal</th>
-			<th width="300px">Keluhan/ Diagnosis</th>
-			<th width="120px">Diagnosa</th>
-			<th>Dokter</th>
+			<th width="40px">No.</th>
+			<th width="250px">Nama Obat</th>
+			<th width="100px">Jumlah Obat</th>
+			<th width="120px">Dosis</th>
 		</tr>		
 	</thead>
 
 	<tbody>
-		<?php
-	        $no=1;
-	        $sql3= $koneksi->query("select * from view_rm where no_rm='$norm'");
-	        while($data= $sql3->fetch_assoc()){
-	        ?>
-		    <tr>
-	            <td><?php echo $data['tgl_pemeriksaan']?></td>
-	            <td><?php echo $data['keluhan']?><br>
-	            	<?php echo 'Cholestrol:'.$data['kol']?><br>
-	            	<?php echo 'Asam Urat:'.$data['au']?><br>
-	            	<?php echo 'Glukosa:'.$data['glu']?><br>
-	            	<?php echo 'Hemoglobin:'.$data['hb']?><br>
-	            </td>
-	            <td><?php echo $data['diagnosa']?><br>
-	            	<?php echo $data['ket']?>
-	            </td>
-	            <td><?php echo $data['nm_dokter']?></td>
-	        </tr>
-	        <?php } ?>        
-	</tbody>
-	</table>
-<br>
-<table border="0" cellspacing="0px" cellpadding="5">
-	<b>Obat-obat</b>
-<tbody>
+		
 		<?php
 	        $no=1;
 	        $sql3= $koneksi->query("Select tb_rekam_medis_detail2.no_rm,tb_obat.nm_obat,jumlah,dosis
@@ -117,13 +101,17 @@ where
 	        while($data= $sql3->fetch_assoc()){
 	        ?>
 		    <tr>
-	            <td><?php echo $no++;?>.</td>
-	            <td width="200px"><?php echo $data['nm_obat']?>
-	            <td width="50px"><?php echo $data['jumlah']?></td>
-	            <td><?php echo $data['dosis']?> x 1&nbspHari</td>
+	            <td align="center"><?php echo $no++;?>.</td>
+	            <td ><?php echo $data['nm_obat']?>
+	            <td align="center"><?php echo $data['jumlah']?></td>
+	            <td align="center"><?php echo $data['dosis']?> x 1&nbspHari</td>
 	        </tr>
 	        <?php } ?>        
 	</tbody>
 </table>
 	<br>
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspApoteker,
+	<br><br><br><br>
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp____________
+	<br><br><br><br><br>
 <input type="button" class="noPrint" value="Cetak" onclick="window.print()">

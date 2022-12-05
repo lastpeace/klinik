@@ -18,8 +18,7 @@
 	<div align="left">
 	<img src="../../images/logo.jpg" width="75" height="75" style="float:left;margin:0 8px 4px 0;">
 	<font size="6" color="red"><b>dr.Febby Astari</b></font><br>
-	Jl. Swatantra V no 10 Rt 09/03 Jatirasa Jatiasih Kota Bekasi<br>Telp: 0878-8730-5379 </div>
-	
+	Jl. Swatantra V no 10 Rt 09/03 Jatirasa jatiasih Kota Bekasi<br>Telp:0878-8730-5379</div>
 
 	<caption>Laporan Pemakaian Obat Periode: <b><?php echo $_POST['tgl_awal']?></b> s/d <b><?php echo $_POST['tgl_akhir']?></b>
 		<?php

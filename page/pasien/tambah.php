@@ -1,5 +1,6 @@
 <?php
-error_reporting(E_ALL ^ E_DEPRECATED AND E_NOTICE);
+ 
+// https://www.malasngoding.com
 // menghubungkan dengan koneksi database
 $koneksi=new mysqli("localhost","root","","klinik");
  
@@ -10,7 +11,7 @@ $nopasien = $data['kodeTerbesar'];
  
 // mengambil angka dari nmor pasien terbesar, menggunakan fungsi substr
 // dan diubah ke integer dengan (int)
-$urutan = (int) substr($nopasien, 5);
+$urutan = (int) substr($nopasien, 3, 5);
  
 // bilangan yang diambil ini ditambah 1 untuk menentukan nomor urut berikutnya
 $urutan++;
@@ -22,19 +23,6 @@ $urutan++;
 $huruf = "PSN";
 $nopasien = $huruf . sprintf("%05s", $urutan);
 ?>
-<script>
-function jumlah(){
-    
-var hrg_beli = document.getElementById('harga_beli').value;
-var hrg_jual = document.getElementById('harga_jual').value;
-var rslt = parseInt(hrg_jual) - parseInt(hrg_beli);
-if(!isNaN(rslt)){
-    document.getElementById('profit').value = rslt;
-}
-
-}
-</script>
-
 <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -45,96 +33,130 @@ if(!isNaN(rslt)){
                         </div>
                             
                         <div class="body">
-                        <form method="POST" action="    ">
-                        <label for="">Kode Pasien</label>
+                        <form method="POST" enctype="multipart/form-data">
+                        
+                        <label for="">No. Pasien</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="kode" value="<?php echo $nopasien; ?>" class="form-control" />
+                            <input type="text" name="kode" value="<?php echo $nopasien; ?>" class="form-control" readonly="" />
                             </div>
-                        </div>
+                        </div>    
 
                         <label for="">Nama Pasien</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="nama"class="form-control" />
+                                <input type="text" name="nama" class="form-control" />
                             </div>
                         </div>
 
                         <label for="">Jenis Kelamin</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="j_kel"class="form-control" />
+                            <select name="jkel" class="form-control show-tick">
+                                <option value="">---Pilih Jenis Kelamin---</option>
+                                <option value="L">Laki-Laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
                             </div>
                         </div>
 
                         <label for="">Pekerjaan</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="pekerjaan"class="form-control" />
+                                <input type="text" name="pekerjaan" class="form-control" />
                             </div>
                         </div>
 
                         <label for="">Agama</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="agama"class="form-control" />
+                            <select name="agama" class="form-control show-tick">
+                                <option value="">---Pilih Agama---</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Kristen Katolik">Kristen Katolik</option>
+                                <option value="Kristen Protestan">Kristen Protestan</option>
+                                <option value="Konghucu">Konghucu</option>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Budha">Budha</option>
+                            </select>
                             </div>
                         </div>
 
                         <label for="">Alamat</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="alamat"class="form-control" />
+                                <input type="text" name="alamat" class="form-control" />
                             </div>
                         </div>
 
-                        <label for="">Tanggal Lahir</label>
+                        <label for="">Tgl Lahir</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="date" name="tgl_lhr"class="form-control" />
+                                <input type="date" name="tgl_lahir" class="form-control" />
                             </div>
                         </div>
 
                         <label for="">Usia</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="usia"class="form-control" />
+                                <input type="text" name="usia" class="form-control" />
                             </div>
                         </div>
 
                         <label for="">Telpon</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="no_tlp"class="form-control" />
+                                <input type="text" name="telpon" class="form-control" />
                             </div>
                         </div>
 
-                        <label for="">GOL DARAH</label>
+                        <label for="">Foto<small>(harus diisi)</small></label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="status"class="form-control" />
+                                <input type="file" name="foto" class="form-control" />
                             </div>
                         </div>
-                        <input type="submit" name="simpanpasien" value="Simpan" class="btn btn-primary">
+
+                        <label for="">Status</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                            <select name="status" class="form-control show-tick">
+                                <option value="">---Pilih Jenis Status---</option>
+                                <option value="A">Aktif</option>
+                                <option value="TA">Tidak Aktif</option>
+                            </select>
+                            </div>
+                        </div>
+
+
+                        
+
+                        <input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
                         </form>
 
 <?php 
-if (isset($_POST['simpanpasien'])){
-    date_default_timezone_set('Asia/Jakarta');
-    $date = date("Y-m-d H:i:s");
+if (isset($_POST['simpan'])){
+
+date_default_timezone_set('Asia/Jakarta');
+$date=date("Y-m-d H:i:s");
 $kode=$_POST['kode'];
 $nama=$_POST['nama'];
-$j_kel=$_POST['j_kel'];
+$jkel=$_POST['jkel'];
 $pekerjaan=$_POST['pekerjaan'];
 $agama=$_POST['agama'];
 $alamat=$_POST['alamat'];
-$tgl_lhr=$_POST['tgl_lhr'];
+$tgl_lahir=$_POST['tgl_lahir'];
 $usia=$_POST['usia'];
-$no_tlp=$_POST['no_tlp'];
+$telpon=$_POST['telpon'];
 $status=$_POST['status'];
-    // $tgldaftar = $_POST['tgldaftar'];
+$foto=$_FILES['foto']['name'];
+$lokasi=$_FILES['foto']['tmp_name'];
+$upload=move_uploaded_file($lokasi, "images/".$foto);
 
-    $sql=$koneksi->query("insert into tb_pasien(no_pasien,nm_pasien,j_kel,pekerjaan,agama,alamat,tgl_lhr,usia,no_tlp,status,tgldaftar) values('$kode','$nama','$j_kel','$pekerjaan','$agama','$alamat','$tgl_lhr','$usia','$no_tlp','$status','$date')");
+if ($upload){
+
+    $sql=$koneksi->query("insert into tb_pasien (no_pasien,nm_pasien,j_kel,pekerjaan,agama,alamat,tgl_lhr,usia,no_tlp,foto,status,tgldaftar) 
+        values('$kode','$nama','$jkel','$pekerjaan','$agama','$alamat','$tgl_lahir','$usia','$telpon','$foto','$status','$date')");
     if ($sql){
         ?>
         <script type="text/javascript">
@@ -142,7 +164,15 @@ $status=$_POST['status'];
         window.location.href="?page=pasien";
         </script>
         <?php
+    }else{
+       ?>
+        <script type="text/javascript">
+        alert ("Data Tidak Berhasil di Simpan");
+        window.location.href="?page=pasien";
+        </script>
+        <?php
     }
+}
 }
 
 ?>

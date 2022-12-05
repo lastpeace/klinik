@@ -23,7 +23,7 @@ if($_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSION['apoteker']){
                     <div class="card">
                         <div class="header">
                             <h2>
-                                DATA DOKTER
+                                DATA PENGGUNA
                             </h2>
                             
                         </div>
@@ -33,11 +33,11 @@ if($_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSION['apoteker']){
                                     <thead>
                                         <tr>
                                         	<th>No.</th>
-                                            <th>Kode Dokter</th>
-                                            <th>Nama Dokter</th>
-                                            <th>Tempat Lahir</th>
-                                            <th>Telp</th>
-                                            <th>Alamat</th>
+                                            <th>Username</th>
+                                            <th>Nama</th>
+                                            <th>Password</th>
+                                            <th>Level</th>
+                                            <th>Foto</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -46,7 +46,7 @@ if($_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSION['apoteker']){
                                     
                                     <?php
                                     $no=1;
-                                    $sql= $koneksi->query("select * from tb_dokter");
+                                    $sql= $koneksi->query("select * from tb_pengguna");
                                     while($data= $sql->fetch_assoc()){
 
 
@@ -54,22 +54,22 @@ if($_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSION['apoteker']){
                                     
                                     <tr>
                                         <td><?php echo $no++;?></td>
-                                        <td><?php echo $data['kd_dokter']?></td>
-                                        <td><?php echo $data['nm_dokter']?></td>
-                                        <td><?php echo $data['tmp_lhr']?></td>
-                                        <td><?php echo $data['tlp']?></td>
-                                        <td><?php echo $data['alamat']?></td>
+                                        <td><?php echo $data['username']?></td>
+                                        <td><?php echo $data['nama']?></td>
+                                        <td><?php echo $data['password']?></td>
+                                        <td><?php echo $data['level']?></td>
+                                        <td><img src="images/<?php echo $data['foto']?>" width="50" height="50" alt=""></td>
                                         <td>
-                                                <a href="?page=dokter&aksi=ubah&kd_dokter=<?php echo $data['kd_dokter'];?> " class="btn btn-success"><img src="images/edit.ico" width="15" height="15" style="float:left;margin:0;" /></a>
-                                                <a onclick="return confirm('Anda Yakin akan menghapus Data Ini...???')" href="?page=dokter&aksi=hapus&kd_dokter=<?php echo $data['kd_dokter'];?>" class="btn btn-danger"><img src="images/delete.ico" width="15" height="15" style="float:left;margin:0;" /></a>
+                                                <a href="?page=pengguna&aksi=ubah&id=<?php echo $data['id'];?> " class="btn btn-success"><img src="images/edit.ico" width="15" height="15" style="float:left;margin:0;" /></a>
+                                                <a onclick="return confirm('Anda Yakin akan menghapus Data Ini...???')" href="?page=pelanggan&aksi=hapus&id=<?php echo $data['id'];?>" class="btn btn-danger"><img src="images/delete.ico" width="15" height="15" style="float:left;margin:0;" /></a>
                                             </td>
                                     </tr>
                                     <?php } ?>        
                                 </tbody>
                             </table>
-                            <a href="?page=dokter&aksi=tambah" class="btn btn-primary"><img src="images/edit_add.png" width="15" height="15" style="float:left;margin:0 2px 2px 0;" />Tambah</a>
-                            <a href="page/dokter/cetak.php" target="blank" class="btn btn-primary"><img src="images/print.ico" width="15" height="15" style="float:left;margin:0 2px 2px 0;" />Cetak</a>
-                            <a href="page/dokter/cetak-excel.php" target="blank" class="btn btn-primary"><img src="images/print.ico" width="15" height="15" style="float:left;margin:0 2px 2px 0;" />Excel</a>
+                            <a href="?page=pengguna&aksi=tambah" class="btn btn-primary"><img src="images/edit_add.png" width="15" height="15" style="float:left;margin:0 2px 2px 0;" />Tambah</a>
+                            <a href="page/pengguna/cetak.php" target="blank" class="btn btn-primary"><img src="images/print.ico" width="15" height="15" style="float:left;margin:0 2px 2px 0;" />Cetak</a>
+                            <a href="page/pengguna/cetak-excel.php" target="blank" class="btn btn-primary"><img src="images/print.ico" width="15" height="15" style="float:left;margin:0 2px 2px 0;" />Excel</a>
                         </div>
                     </div>
 <?php 

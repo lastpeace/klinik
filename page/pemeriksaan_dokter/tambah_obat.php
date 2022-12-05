@@ -97,7 +97,7 @@ WHERE tb_rekam_medis.`no_rm`=tb_rekam_medis_detail3.no_rm AND
     if (isset($_POST['simpan'])){
 
     //$date=date("Y-m-d");
-    //$kd_rm=$_POST['kode'];
+    $kd_rm=$_POST['kode'];
     $kdobat=$_POST['kd_obat'];
     
     $obat=$koneksi->query("select * from tb_obat where kd_obat='$kdobat'");
@@ -184,7 +184,7 @@ WHERE tb_rekam_medis.`no_rm`=tb_rekam_medis_detail3.no_rm AND
                     ?>
                     </tbody>
 
-                    <!--<tr>
+                    <!-- <tr>
                         
                         <td colspan="6" >Hasil Pemeriksaan
                         <input type="text" style="text-align: left;" name="diagnosa" id="diagnosa" placeholder="Diagnosa" class="form-control">
@@ -194,7 +194,7 @@ WHERE tb_rekam_medis.`no_rm`=tb_rekam_medis_detail3.no_rm AND
                         <input type="submit" value="Cetak" class="btn btn-success" onclick="window.open('page/penjualan/struk.php?kode_pjl=<?php echo $kode; ?>&kasir=<?php echo $kasir; ?>','mywindow','width-600px, heigh=600px, left=300px;')">
 
                         </td>
-                    </tr>-->
+                    </tr> -->
                 </table>
             </form>
                 <div>

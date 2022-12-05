@@ -1,5 +1,5 @@
 <?php
-    
+
     $kd_dokter = $_GET['kd_dokter'];
     $sql = $koneksi->query("select * from tb_dokter where kd_dokter='$kd_dokter'");
     $tampil = $sql->fetch_assoc();

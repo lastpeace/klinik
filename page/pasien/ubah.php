@@ -1,5 +1,6 @@
+
 <?php
-    
+
     $no_pasien = $_GET['no_pasien'];
     $sql = $koneksi->query("select * from tb_pasien where no_pasien='$no_pasien'");
     $tampil = $sql->fetch_assoc();
@@ -15,7 +16,7 @@
                         </div>
                             
                         <div class="body">
-                        <form method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                         <label for="">Kode Pasien</label>
                         <div class="form-group">
                             <div class="form-line">
@@ -23,7 +24,7 @@
                             </div>
                         </div>
 
-                        <label for="">Nama Pasien</label>
+                        <label for="">Nama</label>
                         <div class="form-group">
                             <div class="form-line">
                                 <input type="text" name="nama" value="<?php echo $tampil['nm_pasien'];?>" class="form-control" />
@@ -33,7 +34,11 @@
                         <label for="">Jenis Kelamin</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="j_kel" value="<?php echo $tampil['j_kel'];?>" class="form-control" />
+                            <select name="jkel" class="form-control show-tick">
+                                <option value="">---Pilih Jenis Kelamin---</option>
+                                <option value="L"<?php if ($tampil['j_kel']=='L'){echo "selected";}?>>Laki-Laki</option>
+                                <option value="P"<?php if ($tampil['j_kel']=='P'){echo "selected";}?>>Perempuan</option>
+                            </select>
                             </div>
                         </div>
 
@@ -47,7 +52,15 @@
                         <label for="">Agama</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="agama" value="<?php echo $tampil['agama'];?>" class="form-control" />
+                            <select name="agama" class="form-control show-tick">
+                                <option value="">---Pilih Agama---</option>
+                                <option value="Islam"<?php if ($tampil['agama']=='Islam'){echo "selected";}?>>Islam</option>
+                                <option value="Kristen Katolik"<?php if ($tampil['agama']=='Kristen Katolik'){echo "selected";}?>>Kristen Katolik</option>
+                                <option value="Kristen Protestan"<?php if ($tampil['agama']=='Kristen Protestan'){echo "selected";}?>>Kristen Protestan</option>
+                                <option value="Konghucu"<?php if ($tampil['agama']=='Konghucu'){echo "selected";}?>>Konghucu</option>
+                                <option value="Hindu"<?php if ($tampil['agama']=='Hindu'){echo "selected";}?>>Hindu</option>
+                                <option value="Budha"<?php if ($tampil['agama']=='Budha'){echo "selected";}?>>Budha</option>
+                            </select>
                             </div>
                         </div>
 
@@ -58,10 +71,10 @@
                             </div>
                         </div>
 
-                        <label for="">Tanggal Lahir</label>
+                        <label for="">Tgl Lahir</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="date" name="tgl" value="<?php echo $tampil['tgl_lhr'];?>" class="form-control" />
+                                <input type="date" name="tgl_lahir" value="<?php echo $tampil['tgl_lhr'];?>" class="form-control" />
                             </div>
                         </div>
 
@@ -72,20 +85,37 @@
                             </div>
                         </div>
 
-                        <label for="">No Telpone</label>
+                        <label for="">Telpon</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="telp" value="<?php echo $tampil['no_tlp'];?>" class="form-control" />
+                                <input type="text" name="telpon" value="<?php echo $tampil['no_tlp'];?>" class="form-control" />
                             </div>
                         </div>
 
-                        <label for="">GOL DARAH</label>
+                        <label for="">Foto</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="status" value="<?php echo $tampil['status'];?>" class="form-control" />
+                                <img src="images/<?php echo $tampil['foto'];?>" width="50" height="50" alt="">
                             </div>
                         </div>
 
+                        <label for="">Ganti Foto</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="file" name="foto" class="form-control" />
+                            </div>
+                        </div>
+
+                        <label for="">Status</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                            <select name="status" class="form-control show-tick">
+                                <option value="">---Pilih Jenis Status---</option>
+                                <option value="A"<?php if ($tampil['status']=='A'){echo "selected";}?>>Aktif</option>
+                                <option value="TA"<?php if ($tampil['status']=='TA'){echo "selected";}?>>Tidak Aktif</option>
+                            </select>
+                            </div>
+                        </div>
 
                         <input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
                         </form>
@@ -94,25 +124,41 @@
 if (isset($_POST['simpan'])){
 $kode=$_POST['kode'];
 $nama=$_POST['nama'];
+$jkel=$_POST['jkel'];
 $pekerjaan=$_POST['pekerjaan'];
-$j_kel=$_POST['j_kel'];
 $agama=$_POST['agama'];
 $alamat=$_POST['alamat'];
-$tgl = $_POST['tgl'];
-$usia = $_POST['usia'];
-$telp = $_POST['telp'];
-$status = $_POST['status'];
+$tgl_lahir=$_POST['tgl_lahir'];
+$usia=$_POST['usia'];
+$telpon=$_POST['telpon'];
+$status=$_POST['status'];
+$foto=$_FILES['foto']['name'];
+$lokasi=$_FILES['foto']['tmp_name'];
 
+if (!empty($lokasi)){
 
-    $sql=$koneksi->query("update tb_pasien set nm_pasien='$nama',pekerjaan='$pekerjaan',j_kel='$j_kel',agama='$agama',alamat='$alamat',tgl_lhr='$tgl',usia='$usia',no_tlp='$telp', status='$status' where no_pasien='$kode'");
+    $upload=move_uploaded_file($lokasi, "images/".$foto);
+
+    $sql=$koneksi->query("update tb_pasien set nm_pasien='$nama',j_kel='$jkel',pekerjaan='$pekerjaan',agama='$agama',alamat='$alamat', tgl_lhr='$tgl_lahir', usia='$usia', no_tlp='$telpon', foto='$foto',status='$status' where no_pasien='$kode'");
     if ($sql){
         ?>
         <script type="text/javascript">
-        alert ("Data Pasien Berhasil di Ubah");
+        alert ("Data Berhasil di Ubah");
         window.location.href="?page=pasien";
         </script>
         <?php
     }
+    }else{
+      $sql=$koneksi->query("update tb_pasien set nm_pasien='$nama',j_kel='$jkel',pekerjaan='$pekerjaan',agama='$agama',alamat='$alamat', tgl_lhr='$tgl_lahir', usia='$usia', no_tlp='$telpon', status='$status' where no_pasien='$kode'");
+    if ($sql){
+        ?>
+        <script type="text/javascript">
+        alert ("Data Berhasil di Ubah");
+        window.location.href="?page=pasien";
+        </script>
+        <?php
+    }  
+}
 }
 
 ?>

@@ -1,6 +1,5 @@
 <?php
 
-	error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 	$koneksi=new mysqli("localhost","root","","klinik");
 
 ?>
@@ -19,14 +18,11 @@
 	<img src="../../images/logo.jpg" width="75" height="75" style="float:left;margin:0 8px 4px 0;">
 	<font size="6" color="red"><b>dr.Febby Astari</b></font><br>
 	Jl. Swatantra V no 10 Rt 09/03 Jatirasa jatiasih Kota Bekasi<br>Telp:0878-8730-5379</div>
-
-	<caption>Rekap Pendaftaran Pasien Periode: <b><?php echo $_POST['tgl_awal']?></b> s/d <b><?php echo $_POST['tgl_akhir']?></b>
-
-	</caption>
+	
+	<caption>Laporan Data Pasien</caption>
 	<thead>
 		<tr>
 			<th>No</th>
-			<th>Tgl Daftar</th>
 			<th>Nomor Pasien</th>
 			<th>Nama Pasien</th>
 			<th>JK</th>
@@ -40,12 +36,8 @@
 	</thead>
 	<tbody>
 		<?php
-
-			$tgl_awal=$_POST['tgl_awal'];
-			$tgl_akhir=$_POST['tgl_akhir'];
-
 	        $no=1;
-	        $sql= $koneksi->query("select * from tb_pasien where tgldaftar between '$tgl_awal' and '$tgl_akhir' ");
+	        $sql= $koneksi->query("select * from tb_pasien");
 	        while($data= $sql->fetch_assoc()){
 
 
@@ -53,7 +45,6 @@
 	        
 	        <tr>
 	            <td align="center"><?php echo $no++;?></td>
-	            <td align="center"><?php echo date ('d F Y',strtotime($data['tgldaftar']))?></td>
 	            <td align="center"><?php echo $data['no_pasien']?></td>
 	            <td><?php echo $data['nm_pasien']?></td>
 	            <td align="center"><?php echo $data['j_kel']?></td>
@@ -64,16 +55,8 @@
 	            <td align="center"><?php echo $data['no_tlp']?></td>
 	            <td align="center"><?php echo $data['status']?></td>
 	        </tr>
-	        <?php 
-
-	        //$total_pj=$total_pj+$data['total'];
-	        //$total_profit=$total_profit+$profit;
-
-	    	} 
-
-	    	?>        
+	        <?php } ?>        
 	</tbody>
-
 </table>
 <br>
 <input type="button" class="noPrint" value="Cetak"onclick="window.print()">

@@ -19,37 +19,33 @@
 	<font size="6" color="red"><b>dr.Febby Astari</b></font><br>
 	Jl. Swatantra V no 10 Rt 09/03 Jatirasa jatiasih Kota Bekasi<br>Telp:0878-8730-5379</div>
 	
-	<caption>Laporan Data Penambahan Stok</caption>
+	<caption>Laporan Data Dokter</caption>
 	<thead>
 		<tr>
 			<th>No</th>
-			<th>Tgl Input</th>
-			<th>Kode Obat</th>
-            <th>Nama Obat</th>
-            <th>Satuan</th>
-            <th>Isi</th>
-            <th>Jumlah</th>
-			
+			<th>Kode Dokter</th>
+			<th>Nama Dokter</th>
+			<th>Tempat Lahir</th>
+			<th>Telpon</th>
+			<th>Alamat</th>
 		</tr>		
 	</thead>
 	<tbody>
 		<?php
 	        $no=1;
-	        $sql= $koneksi->query("select id,tgl,tb_pembelian_detail.`kd_obat`,`nm_obat`,`satuan`,`isi`,jumlah from tb_pembelian_detail,tb_obat
-                where tb_pembelian_detail.kd_obat=tb_obat.kd_obat");
+	        $sql= $koneksi->query("select * from tb_dokter");
 	        while($data= $sql->fetch_assoc()){
 
 
 	        ?>
 	        
 	        <tr>
-	            <td><?php echo $no++;?></td>
-                <td><?php echo $data['tgl']?></td>
-                <td><?php echo $data['kd_obat']?></td>
-                <td><?php echo $data['nm_obat']?></td>
-                <td><?php echo $data['satuan']?></td>
-                <td><?php echo $data['isi']?></td>
-                <td><?php echo $data['jumlah']?></td>
+	            <td align="center"><?php echo $no++;?></td>
+	            <td align="center"><?php echo $data['kd_dokter']?></td>
+	            <td><?php echo $data['nm_dokter']?></td>
+	            <td align="center"><?php echo $data['tmp_lhr']?></td>
+	            <td align="center"><?php echo $data['tlp']?></td>
+	            <td><?php echo $data['alamat']?></td>
 	        </tr>
 	        <?php } ?>        
 	</tbody>

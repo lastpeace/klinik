@@ -3,10 +3,43 @@
 session_start();
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
-//include "kodepj.php";
-include "koderm.php";
+
 
 $koneksi=new mysqli("localhost","root","","klinik");
+
+function koderm_random($length){
+
+	$data='1234567890';
+	$string='ID-';
+
+	for ($i=0; $i < $length; $i++){
+
+		$pos=rand(0,strlen($data)-1);
+		$string .=$data[$pos];
+
+	}
+
+	return $string;
+}
+
+	$rmkode=koderm_random(10);
+
+    function kodebl_random($length){
+
+        $data='1234567890';
+        $string='BL-';
+    
+        for ($i=0; $i < $length; $i++){
+    
+            $intan=rand(0,strlen($data)-1);
+            $string .=$data[$intan];
+    
+        }
+    
+        return $string;
+    }
+    
+        $kode=kodebl_random(10);
 
 if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSION['apoteker']){
 
@@ -19,7 +52,7 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Home | Klinik Febby Astari Wiguna</title>
+    <title>Home | Sistem Informasi Klinik</title>
     <!-- Favicon-->
     <link rel="icon" href="images/logo.jpg" type="image/x-icon">
 
@@ -83,16 +116,16 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.php"><img src="images/logo.jpg" width="35" height="35" style="float:left;margin:0 8px 4px 0;" />Klinik Dr.Febby Astari</a>
+                <a class="navbar-brand" href="index.php"><img src="images/logo.jpg" width="35" height="35" style="float:left;margin:0 8px 4px 0;" />dr.Febby Astari</a>
             </div>
             
             <div>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="profile.php">Profile</a>
+                        <a href="#"><img src="images/person.ico" width="25" height="25" style="float:left;margin:0 2px 2px 0;" />Profile</a>
                     </li>               
                     <li>
-                        <a href="logout.php">Keluar</a>
+                        <a href="logout.php"><img src="images/power-off.ico" width="25" height="25" style="float:left;margin:0 2px 2px 0;" />Sign Out</a>
                     </li>
                 </ul>
             </div>
@@ -177,18 +210,13 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
                             <span>Pendaftaran Pasien</span>
                         </a>
                     </li>
-                        
+
                     <li>
-                        <a href="?page=rekam_medis&koderm=<?php 
-                        $rmkode = $_SESSION["rekammedis"];
-                        echo $rmkode; ?>">
+                        <a href="?page=rekam_medis&koderm=<?php echo $rmkode; ?>">
                             <img src="images/save.ico" width="25" height="25" style="float:left;margin:0;" />
                             <span>Rekam Medis</span>
                         </a>
                     </li>
-
-                    
-    
                     <?php  } ?>
                     <?php  if($_SESSION['dokter'] || $_SESSION['admin']){ ?>
                     <li>
@@ -197,8 +225,6 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
                             <span>Pemeriksaan Dokter</span>
                         </a>
                     </li>
-
-                  
                     <?php  } ?>
                     <?php  if($_SESSION['apoteker'] || $_SESSION['admin']){ ?>
                      <li>
@@ -207,7 +233,6 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
                             <span>Tambah Stok Obat</span>
                         </a>
                     </li>
-
 
                     <li>
                         <a href="?page=cetakobat">
@@ -260,10 +285,10 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2022 <a href="javascript:void(0);">Klinik Febby Astari</a>
+                    &copy; 2021 <a href="javascript:void(0);">Klinik ABC</a>
                 </div>
                 <div class="version">
-                    <b>Versi Pengembang </b> 0.1
+                    <b>Version: </b> 1.0
                 </div>
             </div>
             <!-- #Footer -->

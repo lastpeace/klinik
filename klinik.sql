@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2022 at 05:48 PM
+-- Generation Time: Dec 05, 2022 at 04:22 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -395,7 +395,7 @@ CREATE TABLE `tb_dokter` (
 --
 
 INSERT INTO `tb_dokter` (`kd_dokter`, `nm_dokter`, `tmp_lhr`, `tlp`, `alamat`) VALUES
-('D001', 'dr.Febby Astari Wiguna', 'Jakarta', '085795526558', 'Bekasi');
+('D001', 'Febby Astari Wiguna', 'Jakarta', '08574914519', 'Bekasi');
 
 -- --------------------------------------------------------
 
@@ -419,9 +419,7 @@ CREATE TABLE `tb_obat` (
 --
 
 INSERT INTO `tb_obat` (`kd_obat`, `nm_obat`, `satuan`, `isi`, `stok`, `harga_beli`, `harga_jual`, `profit`) VALUES
-('OBT00001', 'PARACETAMOL', 'PCS', 1, 20, 3000, 5000, 2000),
-('OBT00002', 'BALJITOT 50ML', 'BOTOL', 1, 15, 30000, 60000, 30000),
-('OBT00003', 'FRESH CARE ROOL ON STRONG', 'PCS', 1, 20, 25000, 35000, 10000);
+('OBT00001', 'Paracetamol', 'BUTIR', 4, 13, 20000, 30000, 10000);
 
 -- --------------------------------------------------------
 
@@ -440,7 +438,7 @@ CREATE TABLE `tb_pasien` (
   `usia` varchar(20) NOT NULL,
   `no_tlp` varchar(20) NOT NULL,
   `foto` varchar(255) NOT NULL,
-  `status` varchar(1) NOT NULL,
+  `status` varchar(2) NOT NULL,
   `tgldaftar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -449,9 +447,8 @@ CREATE TABLE `tb_pasien` (
 --
 
 INSERT INTO `tb_pasien` (`no_pasien`, `nm_pasien`, `j_kel`, `pekerjaan`, `agama`, `alamat`, `tgl_lhr`, `usia`, `no_tlp`, `foto`, `status`, `tgldaftar`) VALUES
-('PSN00001', 'Nizam', 'L', 'Teller Bank', 'Islam', 'Kebarepan', '1998-02-06', '22', '081267678909', 'pasien.png', 'A', '2021-02-04'),
-('PSN00002', 'Andri Partanto', 'L', 'Guru SMA', 'Islam', 'Jakarta', '1990-02-04', '30', '5656565656', 'pasien.png', 'A', '2021-02-04'),
-('PSN00003', 'Heri Herdianto', 'L', 'Sales', 'Islam', 'Cirbebon', '1980-02-26', '40', '0815252525', 'pasien.png', 'A', '2021-02-04');
+('PSN00001', 'Raihan Caesario Ammar Saputra', 'L', 'Mahasiswa', 'Islam', 'Bekasi', '2003-07-23', '20', '08574914519', 'FotoJapeng.jpg', 'A', '2022-12-05'),
+('PSN00002', 'Zaki gastiadi rizal', 'L', 'Mahasiswa', 'Islam', 'Jakarta', '2022-12-02', '20', '08574914519', 'Ammar.jpg', 'TA', '2022-12-05');
 
 -- --------------------------------------------------------
 
@@ -471,7 +468,8 @@ CREATE TABLE `tb_pembelian_detail` (
 --
 
 INSERT INTO `tb_pembelian_detail` (`id`, `tgl`, `kd_obat`, `jumlah`) VALUES
-(2, '2021-02-09', 'OBT00002', 5);
+(2, '2021-02-09', 'OBT00002', 5),
+(3, '2022-12-05', 'OBT00001', 10);
 
 --
 -- Triggers `tb_pembelian_detail`
@@ -515,8 +513,8 @@ CREATE TABLE `tb_pengguna` (
 INSERT INTO `tb_pengguna` (`id`, `username`, `nama`, `password`, `level`, `foto`) VALUES
 (1, 'admin', 'Raihan Caesario Ammar Saputra', 'admin', 'admin', 'ammar.jpg'),
 (3, 'petugas', 'Ilham Priadi Wiguna', 'petugas', 'petugas', 'thumbs-up.png'),
-(4, 'dokter', 'dr.Febby Astari', 'dokter', 'dokter', 'user.png'),
-(5, 'apoteker', 'Nurul', 'apoteker', 'apoteker', 'user.png');
+(4, 'dokter', 'Febby Astari Wiguna', 'dokter', 'dokter', 'user.png'),
+(5, 'apoteker', 'Apoteker', 'apoteker', 'apoteker', 'user.png');
 
 -- --------------------------------------------------------
 
@@ -541,8 +539,7 @@ CREATE TABLE `tb_rekam_medis` (
 --
 
 INSERT INTO `tb_rekam_medis` (`id`, `no_rm`, `no_pasien`, `diagnosa`, `tgl_pemeriksaan`, `ket`, `status`, `statusobat`, `kd_dokter`) VALUES
-(20, 'ID-0585470212', 'PSN00003', 'A186', '2021-02-06', 'OMSK TBC', 'Selesai', 'Selesai', 'D001'),
-(21, 'ID-4832472874', 'PSN00002', 'A182', '2021-02-06', 'TBC LARING/KELENJAR LEHER', 'Selesai', 'Selesai', 'D001');
+(0, 'ID-4123473344', 'PSN00001', 'A186', '2022-12-05', 'OMSK TBC', 'Selesai', 'Selesai', 'D001');
 
 -- --------------------------------------------------------
 
@@ -563,23 +560,7 @@ CREATE TABLE `tb_rekam_medis_detail2` (
 --
 
 INSERT INTO `tb_rekam_medis_detail2` (`id`, `no_rm`, `kd_obat`, `jumlah`, `dosis`) VALUES
-(60, 'ID-8873846998', 'OBT00002', 1, '3'),
-(62, 'ID-0585470212', 'OBT00002', 1, '2'),
-(63, 'ID-4832472874', 'OBT00002', 2, '3'),
-(64, 'ID-9119078138', 'OBT00002', 1, '3'),
-(65, 'ID-9119078138', 'OBT00003', 1, '3');
-
---
--- Triggers `tb_rekam_medis_detail2`
---
-DELIMITER $$
-CREATE TRIGGER `obat` AFTER INSERT ON `tb_rekam_medis_detail2` FOR EACH ROW BEGIN
-update tb_obat
-set stok=stok-NEW.jumlah
-where kd_obat=NEW.kd_obat;
-END
-$$
-DELIMITER ;
+(0, 'ID-4123473344', 'OBT00001', 1, '1');
 
 -- --------------------------------------------------------
 
@@ -608,10 +589,7 @@ CREATE TABLE `tb_rekam_medis_detail3` (
 --
 
 INSERT INTO `tb_rekam_medis_detail3` (`id`, `no_rm`, `bb`, `tb`, `lp`, `suhu`, `td`, `ao`, `kol`, `au`, `glu`, `hb`, `keluhan`) VALUES
-(27, 'ID-8873846998', '70', '170', '38', '35', '130', 'T', '100', '100', '100', '200', 'Batuk,Flu'),
-(28, 'ID-0585470212', '75', '165', '35', '35', '120', 'T', '100', '100', '100', '100', 'Flu,Demam,Muntah'),
-(29, 'ID-4832472874', '70', '170', '38', '35', '130/60', 'T', '100', '100', '100', '200', 'Batuk,Flu,Demam'),
-(30, 'ID-9119078138', '70', '170', '38', '35', '130/60', 'T', '90', '90', '90', '100', 'Batuk,Flu,Demam');
+(0, 'ID-4123473344', '86', '180', '36', '36', '120', 'T', '110', '100', '100', '100', 'Demam,Pusing');
 
 -- --------------------------------------------------------
 
@@ -666,7 +644,7 @@ CREATE TABLE `view_rm` (
 --
 DROP TABLE IF EXISTS `view_beliobat`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_beliobat`  AS SELECT `tb_pembelian_detail`.`id` AS `id`, `tb_pembelian_detail`.`kd_obat` AS `kd_obat`, `tb_obat`.`nm_obat` AS `nm_obat`, `tb_obat`.`satuan` AS `satuan`, `tb_obat`.`isi` AS `isi`, `tb_pembelian_detail`.`jumlah` AS `jumlah` FROM (`tb_pembelian_detail` join `tb_obat`) WHERE `tb_pembelian_detail`.`kd_obat` = `tb_obat`.`kd_obat` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_beliobat`  AS SELECT `tb_pembelian_detail`.`id` AS `id`, `tb_pembelian_detail`.`kd_obat` AS `kd_obat`, `tb_obat`.`nm_obat` AS `nm_obat`, `tb_obat`.`satuan` AS `satuan`, `tb_obat`.`isi` AS `isi`, `tb_pembelian_detail`.`jumlah` AS `jumlah` FROM (`tb_pembelian_detail` join `tb_obat`) WHERE `tb_pembelian_detail`.`kd_obat` = `tb_obat`.`kd_obat``kd_obat`  ;
 
 -- --------------------------------------------------------
 
@@ -675,7 +653,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_rm`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_rm`  AS SELECT `tb_rekam_medis`.`no_rm` AS `no_rm`, `tb_rekam_medis`.`tgl_pemeriksaan` AS `tgl_pemeriksaan`,`tb_rekam_medis`.`status` AS `status`, `tb_pasien`.`no_pasien` AS `no_pasien`, `tb_pasien`.`nm_pasien` AS `nm_pasien`, `tb_pasien`.`tgl_lhr` AS `tgl_lhr`, `tb_pasien`.`pekerjaan` AS `pekerjaan`, `tb_pasien`.`agama` AS `agama`, `tb_pasien`.`alamat` AS `alamat`, `tb_rekam_medis_detail3`.`tb` AS `tb`, `tb_rekam_medis_detail3`.`bb` AS `bb`, `tb_rekam_medis_detail3`.`lp` AS `lp`, `tb_rekam_medis_detail3`.`suhu` AS `suhu`, `tb_rekam_medis_detail3`.`td` AS `td`, `tb_rekam_medis_detail3`.`ao` AS `ao`, `tb_rekam_medis_detail3`.`kol` AS `kol`, `tb_rekam_medis_detail3`.`au` AS `au`, `tb_rekam_medis_detail3`.`glu` AS `glu`, `tb_rekam_medis_detail3`.`hb` AS `hb`, `tb_rekam_medis_detail3`.`keluhan` AS `keluhan`, `tb_rekam_medis`.`diagnosa` AS `diagnosa`, `tb_rekam_medis`.`ket` AS `ket`, `tb_dokter`.`nm_dokter` AS `nm_dokter` FROM (((((`tb_pasien` join `tb_obat`) join `tb_rekam_medis`) join `tb_rekam_medis_detail2`) join `tb_rekam_medis_detail3`) join `tb_dokter`) WHERE `tb_pasien`.`no_pasien` = `tb_rekam_medis`.`no_pasien` AND `tb_rekam_medis_detail2`.`no_rm` = `tb_rekam_medis`.`no_rm` AND `tb_rekam_medis_detail3`.`no_rm` = `tb_rekam_medis`.`no_rm` AND `tb_dokter`.`kd_dokter` = `tb_rekam_medis`.`kd_dokter` GROUP BY `tb_rekam_medis`.`no_rm`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_rm`  AS SELECT `tb_rekam_medis`.`no_rm` AS `no_rm`, `tb_rekam_medis`.`tgl_pemeriksaan` AS `tgl_pemeriksaan`, `tb_pasien`.`no_pasien` AS `no_pasien`, `tb_pasien`.`nm_pasien` AS `nm_pasien`, `tb_pasien`.`tgl_lhr` AS `tgl_lhr`, `tb_pasien`.`pekerjaan` AS `pekerjaan`, `tb_pasien`.`agama` AS `agama`, `tb_pasien`.`alamat` AS `alamat`, `tb_rekam_medis_detail3`.`tb` AS `tb`, `tb_rekam_medis_detail3`.`bb` AS `bb`, `tb_rekam_medis_detail3`.`lp` AS `lp`, `tb_rekam_medis_detail3`.`suhu` AS `suhu`, `tb_rekam_medis_detail3`.`td` AS `td`, `tb_rekam_medis_detail3`.`ao` AS `ao`, `tb_rekam_medis_detail3`.`kol` AS `kol`, `tb_rekam_medis_detail3`.`au` AS `au`, `tb_rekam_medis_detail3`.`glu` AS `glu`, `tb_rekam_medis_detail3`.`hb` AS `hb`, `tb_rekam_medis_detail3`.`keluhan` AS `keluhan`, `tb_rekam_medis`.`diagnosa` AS `diagnosa`, `tb_rekam_medis`.`ket` AS `ket`, `tb_dokter`.`nm_dokter` AS `nm_dokter` FROM (((((`tb_pasien` join `tb_obat`) join `tb_rekam_medis`) join `tb_rekam_medis_detail2`) join `tb_rekam_medis_detail3`) join `tb_dokter`) WHERE `tb_pasien`.`no_pasien` = `tb_rekam_medis`.`no_pasien` AND `tb_rekam_medis_detail2`.`no_rm` = `tb_rekam_medis`.`no_rm` AND `tb_rekam_medis_detail3`.`no_rm` = `tb_rekam_medis`.`no_rm` AND `tb_dokter`.`kd_dokter` = `tb_rekam_medis`.`kd_dokter` GROUP BY `tb_rekam_medis`.`no_rm``no_rm`  ;
 
 --
 -- Indexes for dumped tables
@@ -707,7 +685,7 @@ ALTER TABLE `tb_pengguna`
 -- AUTO_INCREMENT for table `tb_pembelian_detail`
 --
 ALTER TABLE `tb_pembelian_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

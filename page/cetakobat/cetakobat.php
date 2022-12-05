@@ -1,104 +1,62 @@
-<html>
-<title>Print Resep Obat</title>
-	<head>
-		
-		<style type="text/css">		
-			
-			body {
-				padding-top: 20px;
-				padding-bottom: 40px;
-				
-				color:#333;
-			}
-			.page-header {
-					border: 0px solid #999;
-					
-			}
-			.spc {
-			padding:3px 0;
-			}
-</style>
-<div class="header" align="center">
-    <div id="logo_image1"><img src="images\logo.jpg"/></div>
-                <div >
-					<table border="1">
-						<div style="font-size:20px;"><strong>dr.Febby Astari</strong><br></div>
-						<div style="font-size:16px;">SIP:440/59.1/DU/DPM-PTSP.PPJU</div>
-						<div style="font-size:14px;">Jl. Swatantra V no 10 Rt 09/03 Jatirasa Jatiasih Kota Bekasi</div>
-						<div style="font-size:13px;">Telp : 0878-8730-5379</div>
-						</table>
-						</div><br><br>
-	</div>
-	</head>
-	<?php
-	
-	$kode=$_GET['kode'];
-	$no_rm = $_GET['no_rm'];
-	$nama=$_GET['nama'];
-	
-			$koneksi=new mysqli("localhost","root","","klinik");
-			
-			$sql=$koneksi->query("select*from view_rm where no_rm='$no_rm'");
-    			$data = $sql->fetch_assoc();
-    ?>
-	<body>
-	<br><br><div class="span10 " style="margin-left:40px;">
-				<table  border="0" style="width: 100%;">
-				<thead>
-					<?php
-					if($data['no_rm']==true){
-					?>
-					<tr>
-						<td class="spc">NO RM</td><td>:</td><td><?php echo $data['no_rm']?></td>
-					</tr>
+ <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                DAFTAR PASIEN YANG BEROBAT
+                            </h2>
+                            
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Tgl Periksa</th>
+                                            <th>No ID</th>
+                                            <th>No RM</th>
+                                            <th>Nama Pasien</th>
+                                            <th>Berat Badan</th>
+                                            <th>Keluhan</th>
+                                            <th>Status Periksa</th>
+                                            <th>Status Obat</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
 
-					<tr>
-						<td class="spc">Nama</td><td>:</td><td><?php echo $data['nm_pasien']?></td>
-					</tr>
-					<tr>
-						<td class="spc">Tanggal Lahir</td> 
-						<td>:</td>
-						<td><?php echo $data['tgl_lhr']?></td>				
-					</tr>
-						<?php }else{ ?>
-							
-					<tr>
-						<td class="spc">Nama</td>
-						<td>:</td>
-						<td><input type="name" style="border: 0;"></td>
-					</tr>
-					<tr>
-						<td class="spc">Umur</td> 
-						<td>:</td>
-						<td><input type="text" style="border: 0;"></td>				
-					</tr>
-						<?php } ?>
-				</thead>
-				</table>
-				<br><br>
-	</div>
-			
-		<br><div style=text-align:left;font-size:14px;font-family:arial;width:60%;color:#333;><strong>Catatan :</strong> <br><br><br></div>
-		<br><div style=text-align:left;font-size:14px;font-family:arial;width:60%;color:#333;><strong>Kesimpulan :</strong> <br><br><br></div>
-		<br><div style=text-align:left;font-size:14px;font-family:arial;width:60%;color:#333;><strong>Saran :</strong> <br></div>
-		<br><br><div style=text-align:center;width:45%;float:right;font-size:11px;>
-		<div style=font-size:16px;font-family:arial;color:#333;>Pemeriksa</div><br><br><br>
-		<div style=font-size:16px;font-family:arial;color:#333;></div>
-		<div style=font-size:16px;font-family:arial;color:#333;>--------------------------------</div>
-		<div style=font-size:16px;font-family:arial;color:#333;>dr. Febby Astari</div>
-		</div>
-		</div>
-		<a class="btn btn-primary" onclick="printdiv()" align="center">Cetak Resep</a>
-	</body>
-	
-	<script>
-		function printDiv(elementId) {
-			var a = document.getElementById('printing-css').value;
-			var b = document.getElementById(elementId).innerHTML;
-			window.frames["print_frame"].document.title = document.title;
-			window.frames["print_frame"].document.body.innerHTML = '<style>' + a + '</style>' + b;
-			window.frames["print_frame"].window.focus();
-			window.frames["print_frame"].window.print();
-		}
-</script>
-</html>
+                                    <tbody>
+                                    
+                                    <?php
+                                    $no=1;
+                                    $sql= $koneksi->query("SELECT `tgl_pemeriksaan`,tb_rekam_medis.`no_rm`,tb_rekam_medis.`no_pasien`,`nm_pasien`,bb,`keluhan`,tb_rekam_medis.status,tb_rekam_medis.statusobat FROM tb_rekam_medis, tb_pasien,tb_rekam_medis_detail3
+                                        WHERE tb_rekam_medis.`no_rm`=tb_rekam_medis_detail3.no_rm AND 
+                                              tb_pasien.`no_pasien`=tb_rekam_medis.`no_pasien`
+                                              order by tb_rekam_medis.id DESC");
+                                    while($data= $sql->fetch_assoc()){
+
+
+                                    ?>
+                                    
+                                    <tr>
+                                        <td><?php echo $no++;?></td>
+                                        <td><?php echo $data['tgl_pemeriksaan']?></td>
+                                        <td><?php echo $data['no_rm']?></td>
+                                        <td><?php echo $data['no_pasien']?></td>
+                                        <td><?php echo $data['nm_pasien']?></td>
+                                        <td><?php echo $data['bb']?></td>
+                                        <td><?php echo $data['keluhan']?></td>
+                                        <td><font color="blue"><?php echo $data['status']?></font></td>
+                                        <td><font color="blue"><?php echo $data['statusobat']?></font></td>
+                                        <td>
+                                                <input type="submit" value="Cetak Obat" class="btn btn-success" onclick="window.open('page/cetakobat/cetak.php?no_rm=<?php echo $data['no_rm']; ?>','mywindow','width=600px, height=600px, left=400px;')">
+                                            </td>
+                                    </tr>
+                                    <?php } ?>        
+                                </tbody>
+                            </table>
+                            <!--<a href="?page=pemeriksaan_dokter&aksi=tambah" class="btn btn-primary">Tambah</a>
+                            <a href="page/pemeriksaan_dokter/cetak.php" target="blank" class="btn btn-primary">Cetak</a>-->
+                        </div>
+                    </div>
+                       
