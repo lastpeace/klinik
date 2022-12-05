@@ -3,7 +3,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                DAFTAR PASIEN YANG BEROBAT
+                                DAFTAR REKAM MEDIS PASIEN
                             </h2>
                             
                         </div>
@@ -13,13 +13,11 @@
                                     <thead>
                                         <tr>
                                         	<th>No.</th>
-                                            <th>Tgl Periksa</th>
-                                            <th>No ID</th>
                                             <th>No RM</th>
                                             <th>Nama Pasien</th>
-                                            <th>Berat Badan</th>
-                                            <th>Keluhan</th>
-                                            <th>Status Periksa</th>
+                                            <th>Tgl Lahir</th>
+                                            <th>Agama</th>
+                                            <th>Alamat</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -28,10 +26,11 @@
                                     
                                     <?php
                                     $no=1;
-                                    $sql= $koneksi->query("SELECT `tgl_pemeriksaan`,tb_rekam_medis.`no_rm`,tb_rekam_medis.`no_pasien`,`nm_pasien`,bb,`keluhan`,tb_rekam_medis.status FROM tb_rekam_medis, tb_pasien,tb_rekam_medis_detail3
-                                        WHERE tb_rekam_medis.`no_rm`=tb_rekam_medis_detail3.no_rm AND 
-                                              tb_pasien.`no_pasien`=tb_rekam_medis.`no_pasien`
-                                              order by tb_rekam_medis.id DESC");
+                                    $sql= $koneksi->query("Select  tb_pasien.no_pasien, nm_pasien,tgl_lhr,agama,alamat
+                                        from  tb_pasien, tb_rekam_medis
+                                        where tb_pasien.no_pasien=tb_rekam_medis.no_pasien
+                                        group by nm_pasien
+                                        ");
                                     while($data= $sql->fetch_assoc()){
 
 
@@ -39,17 +38,14 @@
                                     
                                     <tr>
                                         <td><?php echo $no++;?></td>
-                                        <td><?php echo $data['tgl_pemeriksaan']?></td>
-                                        <td><?php echo $data['no_rm']?></td>
                                         <td><?php echo $data['no_pasien']?></td>
                                         <td><?php echo $data['nm_pasien']?></td>
-                                        <td><?php echo $data['bb']?></td>
-                                        <td><?php echo $data['keluhan']?></td>
-                                        <td><font color="blue"><?php echo $data['status']?></font></td>
+                                        <td><?php echo $data['tgl_lhr']?></td>
+                                        <td><?php echo $data['agama']?></td>
+                                        <td><?php echo $data['alamat']?></td>
                                         <td>
-                                                <a href="?page=pemeriksaan_dokter&aksi=pemeriksaan_dokter&no_rm=<?php echo $data['no_rm'];?> " class="btn btn-success">Lihat</a>
-                                                <a href="?page=pemeriksaan_dokter&aksi=tambah_obat&no_rm=<?php echo $data['no_rm'];?> " class="btn btn-success">+ Obat</a>
-                                            </td>
+                                            <a href="?page=laprm&aksi=daftar&no_pasien=<?php echo $data['no_pasien'];?> " class="btn btn-success">Lihat Rekam Medis</a>
+                                        </td>
                                     </tr>
                                     <?php } ?>        
                                 </tbody>
