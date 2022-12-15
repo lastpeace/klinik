@@ -72,7 +72,7 @@
     while ($data_pasien=$pasien->fetch_assoc()){
        $status=$data_pasien['status'];
        if($status=='TA'){
-            $koneksi->query("INSERT INTO tb_rekam_medis(no_rm,no_pasien,diagnosa,tgl_pemeriksaan,ket,status,statusobat,kd_dokter)values('$no_rm','$nopasien','-','$date','-','Dalam Antrian','Dalam Antrian','$kddokter')");
+            $koneksi->query("INSERT INTO tb_rekam_medis(no_rm,no_pasien,diagnosa,tgl_pemeriksaan,ket,status,statusobat,statuspembayaran,kd_dokter,biayaperiksa)values('$no_rm','$nopasien','-','$date','-','Dalam Antrian','Dalam Antrian','Belum Dibayarkan','$kddokter','30000')");
             $koneksi->query("update tb_pasien set status='A' where no_pasien='$nopasien'");   
         }
         else{

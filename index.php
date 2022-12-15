@@ -285,10 +285,10 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2021 <a href="javascript:void(0);">Klinik ABC</a>
+                    &copy; 2022 <a href="javascript:void(0);">Klinik Febby Astari</a>
                 </div>
                 <div class="version">
-                    <b>Version: </b> 1.0
+                    <b>Version: </b> 0.1
                 </div>
             </div>
             <!-- #Footer -->

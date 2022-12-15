@@ -21,6 +21,7 @@
                                             <th>Keluhan</th>
                                             <th>Status Periksa</th>
                                             <th>Status Obat</th>
+                                            <th>Status Pembayaran</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -29,7 +30,7 @@
                                     
                                     <?php
                                     $no=1;
-                                    $sql= $koneksi->query("SELECT `tgl_pemeriksaan`,tb_rekam_medis.`no_rm`,tb_rekam_medis.`no_pasien`,`nm_pasien`,bb,`keluhan`,tb_rekam_medis.status,tb_rekam_medis.statusobat FROM tb_rekam_medis, tb_pasien,tb_rekam_medis_detail3
+                                    $sql= $koneksi->query("SELECT `tgl_pemeriksaan`,tb_rekam_medis.`no_rm`,tb_rekam_medis.`no_pasien`,`nm_pasien`,bb,`keluhan`,tb_rekam_medis.status,tb_rekam_medis.statusobat,tb_rekam_medis.statuspembayaran FROM tb_rekam_medis, tb_pasien,tb_rekam_medis_detail3
                                         WHERE tb_rekam_medis.`no_rm`=tb_rekam_medis_detail3.no_rm AND 
                                               tb_pasien.`no_pasien`=tb_rekam_medis.`no_pasien`
                                               order by tb_rekam_medis.id DESC");
@@ -48,9 +49,12 @@
                                         <td><?php echo $data['keluhan']?></td>
                                         <td><font color="blue"><?php echo $data['status']?></font></td>
                                         <td><font color="blue"><?php echo $data['statusobat']?></font></td>
+                                        <td><font color="blue"><?php echo $data['statuspembayaran']?></font></td>
                                         <td>
                                                 <input type="submit" value="Cetak Obat" class="btn btn-success" onclick="window.open('page/cetakobat/cetak.php?no_rm=<?php echo $data['no_rm']; ?>','mywindow','width=600px, height=600px, left=400px;')">
+                                                <input type="submit" value="Bayar" class="btn btn-success" onclick="window.open('page/cetakobat/cetakpembayaran.php?no_rm=<?php echo $data['no_rm']; ?>','mywindow','width=600px, height=600px, left=400px;')">
                                             </td>
+                                            
                                     </tr>
                                     <?php } ?>        
                                 </tbody>
