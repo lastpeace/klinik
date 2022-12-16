@@ -1,3 +1,25 @@
+ <?php
+    if (isset($_POST['Bayar'])) {
+        $norm = $_POST['norm'];
+		$Qpasien = $koneksi->query("select * from tb_rekam_medis where no_rm='$norm'");
+        $Rpasien= $Qpasien->fetch_assoc();
+		$nopasien = $Rpasien['no_pasien'];
+		$pasien=$koneksi->query("update tb_pasien set status='TA' where no_pasien = '$nopasien'");
+        
+        if($pasien) {
+            ?>
+        <script>
+            window.open('page/cetakobat/cetakpembayaran.php?no_rm=<?php echo $_POST['norm']; ?>','mywindow','width=600px, height=600px, left=400px;');    
+        </script>
+	<?php
+        } else {
+            ?>
+            <script>alert("gagal bayar");</script>
+            <?php
+        }
+     } 
+ ?>
+ 
  <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -50,11 +72,13 @@
                                         <td><font color="blue"><?php echo $data['status']?></font></td>
                                         <td><font color="blue"><?php echo $data['statusobat']?></font></td>
                                         <td><font color="blue"><?php echo $data['statuspembayaran']?></font></td>
-                                        <td>
+                                        <form method="post">
+                                            <td>
+                                                <input type="hidden" name="norm" value="<?= $data['no_rm'] ?>">
                                                 <input type="submit" value="Cetak Obat" class="btn btn-success" onclick="window.open('page/cetakobat/cetak.php?no_rm=<?php echo $data['no_rm']; ?>','mywindow','width=600px, height=600px, left=400px;')">
-                                                <input type="submit" value="Bayar" class="btn btn-success" onclick="window.open('page/cetakobat/cetakpembayaran.php?no_rm=<?php echo $data['no_rm']; ?>','mywindow','width=600px, height=600px, left=400px;')">
+                                                <input type="submit" name="Bayar" value="Bayar" class="btn btn-success" onclick="">
                                             </td>
-                                            
+                                        </form>
                                     </tr>
                                     <?php } ?>        
                                 </tbody>
