@@ -186,9 +186,9 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
                             <span>Master</span>
                         </a>
                         <ul class="ml-menu">
-                            <li>
+                            <!-- <li>
                                 <a href="?page=dokter"><img src="images/person.ico" width="25" height="25" style="float:left;margin:0 8px 4px 0;" />Data Dokter</a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="?page=obat"><img src="images/document-edit.ico" width="25" height="25" style="float:left;margin:0 8px 4px 0;" />Data Obat</a>
                             </li>
@@ -262,6 +262,9 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
                             </li>
                             <li>
                                 <a data-toggle="modal" data-target="#smallModal3"><img src="images/document.ico" width="25" height="25" style="float:left;margin:0;" />Laporan Berobat Pasien</a>
+                            </li>
+                            <li>
+                                <a data-toggle="modal" data-target="#smallModal4"><img src="images/document.ico" width="25" height="25" style="float:left;margin:0;" />Laporan Pendapatan</a>
                             </li>
                         </ul>
                     </li>
@@ -620,3 +623,37 @@ if($_SESSION['admin'] || $_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSIO
     </div>
 </div>
 <!--Modal Rekap berobat pasien-->
+
+<!-- Modal Rekap Pendapatan -->
+<div class="modal fade" id="smallModal4" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="smallModalLabel">Laporan Pendapatan</h4>
+            </div>
+            <div class="modal-body">
+            <form method="POST" action="page/laporan/rekapberobatpasien.php" target="blank">
+            <label for="">Tanggal Awal</label>
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="date" name="tgl_awal"class="form-control" />
+                </div>
+            
+            </div>
+
+            <label for="">Tanggal Akhir</label>
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="date" name="tgl_akhir"class="form-control" />
+                </div>
+            </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Cetak</button>
+                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

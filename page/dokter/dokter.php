@@ -60,14 +60,14 @@ if($_SESSION['petugas'] || $_SESSION['dokter'] || $_SESSION['apoteker']){
                                         <td><?php echo $data['tlp']?></td>
                                         <td><?php echo $data['alamat']?></td>
                                         <td>
-                                                <a href="?page=dokter&aksi=ubah&kd_dokter=<?php echo $data['kd_dokter'];?> " class="btn btn-success"><img src="images/edit.ico" width="15" height="15" style="float:left;margin:0;" /></a>
-                                                <a onclick="return confirm('Anda Yakin akan menghapus Data Ini...???')" href="?page=dokter&aksi=hapus&kd_dokter=<?php echo $data['kd_dokter'];?>" class="btn btn-danger"><img src="images/delete.ico" width="15" height="15" style="float:left;margin:0;" /></a>
+                                                <a href="?page=dokter&aksi=ubah&kd_dokter=<?php echo $data['kd_dokter'];?> " class="btn btn-success"><img src="images/edit.ico" width="15" height="15" style="float:left;margin:0;" /> Edit Data</a>
+                                                <!-- <a onclick="return confirm('Anda Yakin akan menghapus Data Ini...???')" href="?page=dokter&aksi=hapus&kd_dokter=<?php echo $data['kd_dokter'];?>" class="btn btn-danger"><img src="images/delete.ico" width="15" height="15" style="float:left;margin:0;" /></a> -->
                                             </td>
                                     </tr>
                                     <?php } ?>        
                                 </tbody>
                             </table>
-                            <a href="?page=dokter&aksi=tambah" class="btn btn-primary"><img src="images/edit_add.png" width="15" height="15" style="float:left;margin:0 2px 2px 0;" />Tambah</a>
+                            <!-- <a href="?page=dokter&aksi=tambah" class="btn btn-primary"><img src="images/edit_add.png" width="15" height="15" style="float:left;margin:0 2px 2px 0;" />Tambah</a> -->
                             <a href="page/dokter/cetak.php" target="blank" class="btn btn-primary"><img src="images/print.ico" width="15" height="15" style="float:left;margin:0 2px 2px 0;" />Cetak</a>
                             <a href="page/dokter/cetak-excel.php" target="blank" class="btn btn-primary"><img src="images/print.ico" width="15" height="15" style="float:left;margin:0 2px 2px 0;" />Excel</a>
                         </div>
