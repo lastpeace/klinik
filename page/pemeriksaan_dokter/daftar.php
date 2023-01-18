@@ -29,9 +29,9 @@
                                     <?php
                                     $no=1;
                                     $sql= $koneksi->query("SELECT `tgl_pemeriksaan`,tb_rekam_medis.`no_rm`,tb_rekam_medis.`no_pasien`,`nm_pasien`,bb,`keluhan`,tb_rekam_medis.status FROM tb_rekam_medis, tb_pasien,tb_rekam_medis_detail3
-                                        WHERE tb_rekam_medis.`no_rm`=tb_rekam_medis_detail3.no_rm AND 
-                                              tb_pasien.`no_pasien`=tb_rekam_medis.`no_pasien`
-                                              order by tb_rekam_medis.id DESC");
+                                    WHERE tb_rekam_medis.`no_rm`=tb_rekam_medis_detail3.no_rm AND 
+                                          tb_pasien.`no_pasien`=tb_rekam_medis.`no_pasien`AND tb_rekam_medis.status <> 'Selesai' AND tb_rekam_medis.statuspembayaran <> 'Selesai' AND tb_rekam_medis.statusobat <> 'Selesai'
+                                          order by tb_rekam_medis.id DESC;");
                                     while($data= $sql->fetch_assoc()){
 
 
