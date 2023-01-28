@@ -214,7 +214,7 @@
                         <br>
                         <input type="submit" name="simpanawal" value="Simpan">-->
                         <!--awal tanpa database-->
-                        <input type="checkbox" id="batuk" name="keluhan[]" value="Batuk" class="chk-col-red" />
+                        <!-- <input type="checkbox" id="batuk" name="keluhan[]" value="Batuk" class="chk-col-red" />
                         <label for="batuk">BATUK</label>
                         <input type="checkbox" id="flu" name="keluhan[]" value="Flu" class="chk-col-red"  />
                         <label for="flu">FLU</label>
@@ -223,9 +223,9 @@
                         <input type="checkbox" id="pusing" name="keluhan[]" value="Pusing" class="chk-col-red"  />
                         <label for="pusing">PUSING</label>
                         <input type="checkbox" id="mual" name="keluhan[]" value="Mual" class="chk-col-red"  />
-                        <label for="mual">MUAL</label>
-                        <input type="checkbox" id="muntah" name="keluhan[]" value="Muntah" class="chk-col-red"  />
-                        <label for="muntah">MUNTAH</label>
+                        <label for="mual">MUAL</label> -->
+                        <!-- <input type="checkbox" id="muntah" name="keluhan[]" value="Muntah" class="chk-col-red"  /> -->
+                        <textarea name="keluhan[]" id="" cols="30" rows="10"></textarea>
                         <br>
                         <input type="submit" name="simpanawal" value="Simpan" class="btn btn-primary">
                        <!--end tanpa database-->
